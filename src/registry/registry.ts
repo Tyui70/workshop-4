@@ -27,15 +27,16 @@ export async function launchRegistry() {
     const existingNode = registeredNodes.find((node) => node.nodeId === nodeId);
 
     if (existingNode) {
-      return res.status(400).json({ message: Node ${nodeId} is already registered. });
+      return res.status(400).json({ message: `Node ${nodeId} is already registered.` });
     }
+
 
     // Add the node to the registered nodes array
     registeredNodes.push({ nodeId, pubKey});
     const nodeRegistry: GetNodeRegistryBody = { nodes: registeredNodes };
     res.json(nodeRegistry);
 
-    return res.status(201).json({ message: Node ${nodeId} successfully registered. });
+    return res.status(201).json({ message: `Node ${nodeId} successfully registered.` });
   });
 
   _registry.get('/getNodeRegistry', (req, res) => {
@@ -43,12 +44,14 @@ export async function launchRegistry() {
     res.json(nodeRegistry);
   });
 
+  
+
   // TODO implement the status route
    _registry.get("/status", (req, res) => { res.send('live');});
 
   const server = _registry.listen(REGISTRY_PORT, () => {
-    console.log(registry is listening on port ${REGISTRY_PORT});
+    console.log(`registry is listening on port ${REGISTRY_PORT}`);
   });
 
-  return server;
-}
+  return server;
+} 
