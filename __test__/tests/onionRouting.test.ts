@@ -357,7 +357,7 @@ describe("Onion Routing", () => {
         }
       });
     });
-
+    
     describe("Sending messages to users - 1 pt", () => {
       const servers: http.Server[] = [];
 
@@ -414,7 +414,7 @@ describe("Onion Routing", () => {
       });
     });
   });
-
+  
   describe("Creating all cryptographic functions - 4pt", () => {
     it("Can generate RSA key pair - 0.5pt", async () => {
       const { publicKey, privateKey } = await generateRsaKeyPair();
